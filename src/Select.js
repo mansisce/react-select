@@ -447,8 +447,12 @@ const Select = React.createClass({
 	},
 
 	handleInputChange (event) {
-		let newInputValue = event.target.value;
-
+		let newInputValue = event.target.value.trim();
+		
+		if (!trimedInp) {
+			return;
+		}
+			
 		if (this.state.inputValue !== event.target.value && this.props.onInputChange) {
 			let nextState = this.props.onInputChange(newInputValue);
 			// Note: != used deliberately here to catch undefined and null
